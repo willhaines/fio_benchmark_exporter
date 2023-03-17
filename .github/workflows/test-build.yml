@@ -1,0 +1,22 @@
+# This workflow runs any time a Pull Request opened against the `main` branch of
+# your repository. It attempts to build the container image, and prevents merging
+# the PR if there are any problems.
+
+name: Test Build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Test Build
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Attempt to build image
+        run: |
+          cd sources
+          podman build .
