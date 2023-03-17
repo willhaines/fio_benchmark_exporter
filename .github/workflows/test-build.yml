@@ -18,5 +18,4 @@ jobs:
 
       - name: Attempt to build image
         run: |
-          cd sources
           podman build .
